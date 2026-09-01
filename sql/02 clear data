@@ -1,0 +1,18 @@
+-- ============================================
+-- Skripta za brisanje svih podataka iz tablica
+-- (redoslijed je bitan zbog foreign key ograničenja)
+-- ============================================
+
+USE galerija_db;
+
+SET FOREIGN_KEY_CHECKS = 0;
+
+TRUNCATE TABLE djelo_izlozba;
+TRUNCATE TABLE djelo;
+TRUNCATE TABLE izlozba;
+TRUNCATE TABLE materijal_tehnika;
+TRUNCATE TABLE stil_pokret;
+TRUNCATE TABLE umjetnik;
+TRUNCATE TABLE korisnik;
+
+SET FOREIGN_KEY_CHECKS = 1;

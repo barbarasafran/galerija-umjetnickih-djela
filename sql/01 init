@@ -1,0 +1,68 @@
+-- ============================================
+-- DDL skripta: kreiranje svih tablica
+-- Baza: galerija_db
+-- ============================================
+
+USE galerija_db;
+
+CREATE TABLE korisnik (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    korisnicko_ime VARCHAR(50) NOT NULL UNIQUE,
+    lozinka_hash VARCHAR(255) NOT NULL,
+    uloga VARCHAR(20) NOT NULL CHECK (uloga IN ('ADMINISTRATOR', 'KORISNIK'))
+);
+
+CREATE TABLE umjetnik (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    ime VARCHAR(100) NOT NULL,
+    prezime VARCHAR(100) NOT NULL,
+    datum_rodjenja DATE,
+    drzava VARCHAR(100),
+    biografija TEXT
+);
+
+CREATE TABLE stil_pokret (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    naziv VARCHAR(100) NOT NULL,
+    opis TEXT,
+    razdoblje VARCHAR(100)
+);
+
+CREATE TABLE materijal_tehnika (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    naziv VARCHAR(100) NOT NULL,
+    opis TEXT
+);
+
+CREATE TABLE izlozba (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    naziv VARCHAR(150) NOT NULL,
+    lokacija VARCHAR(150),
+    datum_pocetka DATE,
+    datum_zavrsetka DATE,
+    opis TEXT
+);
+
+CREATE TABLE djelo (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    naziv VARCHAR(150) NOT NULL,
+    godina_nastanka INT,
+    dimenzije VARCHAR(100),
+    opis TEXT,
+    putanja_slike VARCHAR(255),
+    umjetnik_id INT NOT NULL,
+    stil_id INT,
+    materijal_id INT,
+    CONSTRAINT fk_djelo_umjetnik FOREIGN KEY (umjetnik_id) REFERENCES umjetnik(id),
+    CONSTRAINT fk_djelo_stil FOREIGN KEY (stil_id) REFERENCES stil_pokret(id),
+    CONSTRAINT fk_djelo_materijal FOREIGN KEY (materijal_id) REFERENCES materijal_tehnika(id)
+);
+
+-- Veza tablica za many-to-many odnos Djelo <-> Izlozba (drag & drop cilja ovdje)
+CREATE TABLE djelo_izlozba (
+    djelo_id INT NOT NULL,
+    izlozba_id INT NOT NULL,
+    PRIMARY KEY (djelo_id, izlozba_id),
+    CONSTRAINT fk_di_djelo FOREIGN KEY (djelo_id) REFERENCES djelo(id) ON DELETE CASCADE,
+    CONSTRAINT fk_di_izlozba FOREIGN KEY (izlozba_id) REFERENCES izlozba(id) ON DELETE CASCADE
+);

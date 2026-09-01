@@ -1,0 +1,23 @@
+-- ============================================
+-- Procedura za kreiranje administratorskog korisnika
+-- Poziva se JEDNOM nakon 01_init.sql
+-- ============================================
+
+USE galerija_db;
+
+DELIMITER //
+
+CREATE PROCEDURE sp_kreiraj_admina(
+    IN p_korisnicko_ime VARCHAR(50),
+    IN p_lozinka_hash VARCHAR(255)
+)
+BEGIN
+    INSERT INTO korisnik (korisnicko_ime, lozinka_hash, uloga)
+    VALUES (p_korisnicko_ime, p_lozinka_hash, 'ADMINISTRATOR');
+END //
+
+DELIMITER ;
+
+-- Primjer poziva (lozinku hashiraj u Javi s BCrypt-om PRIJE nego je upišeš ovdje
+-- - ovo je samo primjer s placeholder hashom):
+-- CALL sp_kreiraj_admina('admin', '$2a$10$primjerHashaIzBCrypta...');

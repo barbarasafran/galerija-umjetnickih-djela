@@ -1,0 +1,81 @@
+USE galerija_db;
+
+-- ============================================
+-- Procedure za Djelo (CRUD) + vezu s Izložbom
+-- ============================================
+
+DELIMITER //
+
+-- INSERT - vraća novi id kroz OUT parametar
+CREATE PROCEDURE sp_dodaj_djelo(
+    IN p_naziv VARCHAR(150),
+    IN p_godina_nastanka INT,
+    IN p_dimenzije VARCHAR(100),
+    IN p_opis TEXT,
+    IN p_putanja_slike VARCHAR(255),
+    IN p_umjetnik_id INT,
+    IN p_stil_id INT,
+    IN p_materijal_id INT,
+    OUT p_novi_id INT
+)
+BEGIN
+    INSERT INTO djelo (naziv, godina_nastanka, dimenzije, opis, putanja_slike, umjetnik_id, stil_id, materijal_id)
+    VALUES (p_naziv, p_godina_nastanka, p_dimenzije, p_opis, p_putanja_slike, p_umjetnik_id, p_stil_id, p_materijal_id);
+
+    SET p_novi_id = LAST_INSERT_ID();
+END //
+
+-- UPDATE
+CREATE PROCEDURE sp_azuriraj_djelo(
+    IN p_id INT,
+    IN p_naziv VARCHAR(150),
+    IN p_godina_nastanka INT,
+    IN p_dimenzije VARCHAR(100),
+    IN p_opis TEXT,
+    IN p_putanja_slike VARCHAR(255),
+    IN p_umjetnik_id INT,
+    IN p_stil_id INT,
+    IN p_materijal_id INT
+)
+BEGIN
+    UPDATE djelo
+    SET naziv = p_naziv,
+        godina_nastanka = p_godina_nastanka,
+        dimenzije = p_dimenzije,
+        opis = p_opis,
+        putanja_slike = p_putanja_slike,
+        umjetnik_id = p_umjetnik_id,
+        stil_id = p_stil_id,
+        materijal_id = p_materijal_id
+    WHERE id = p_id;
+END //
+
+-- DELETE
+CREATE PROCEDURE sp_obrisi_djelo(
+    IN p_id INT
+)
+BEGIN
+    DELETE FROM djelo WHERE id = p_id;
+END //
+
+-- Dodavanje djela na izložbu (drag & drop cilja ovo)
+CREATE PROCEDURE sp_dodaj_djelo_na_izlozbu(
+    IN p_djelo_id INT,
+    IN p_izlozba_id INT
+)
+BEGIN
+    -- INSERT IGNORE sprječava grešku ako je djelo već na toj izložbi
+    -- (PRIMARY KEY (djelo_id, izlozba_id) bi inače bacio duplicate key error)
+    INSERT IGNORE INTO djelo_izlozba (djelo_id, izlozba_id) VALUES (p_djelo_id, p_izlozba_id);
+END //
+
+-- Uklanjanje djela s izložbe
+CREATE PROCEDURE sp_ukloni_djelo_s_izlozbe(
+    IN p_djelo_id INT,
+    IN p_izlozba_id INT
+)
+BEGIN
+    DELETE FROM djelo_izlozba WHERE djelo_id = p_djelo_id AND izlozba_id = p_izlozba_id;
+END //
+
+DELIMITER ;
