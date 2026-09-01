@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane fx:id="rootPane" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.controller.GlavniProzorController">
+
+    <top>
+        <MenuBar fx:id="menuBar">
+            <Menu text="Djela">
+                <MenuItem text="Pregled djela" onAction="#onPregledDjela"/>
+                <MenuItem text="Detalji djela (slika, drag &amp; drop)" onAction="#onDetaljiDjela"/>
+                <MenuItem text="Statistika" onAction="#onStatistika"/>
+            </Menu>
+            <Menu text="Umjetnici">
+                <MenuItem text="Pregled umjetnika" onAction="#onPregledUmjetnika"/>
+            </Menu>
+            <Menu text="Stilovi/Pokreti">
+                <MenuItem text="Pregled stilova" onAction="#onPregledStilova"/>
+            </Menu>
+            <Menu text="Materijali/Tehnike">
+                <MenuItem text="Pregled materijala" onAction="#onPregledMaterijala"/>
+            </Menu>
+            <Menu text="Izložbe">
+                <MenuItem text="Pregled izložbi" onAction="#onPregledIzlozbi"/>
+            </Menu>
+            <Menu fx:id="izbornikAdmin" text="Administracija" visible="false">
+                <MenuItem text="Obriši sve podatke" onAction="#onObrisiPodatke"/>
+                <MenuItem text="Učitaj početne podatke" onAction="#onUcitajPodatke"/>
+                <MenuItem text="Napravi backup baze (XML)" onAction="#onNapraviBackup"/>
+            </Menu>
+            <Menu text="Korisnik">
+                <MenuItem text="Odjava" onAction="#onOdjava"/>
+            </Menu>
+        </MenuBar>
+    </top>
+
+    <center>
+        <Label fx:id="labelDobrodoslica" text="Dobrodošli!" style="-fx-font-size: 18px; -fx-padding: 20px;"/>
+    </center>
+
+</BorderPane>

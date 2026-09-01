@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <ekran>
+        <sirina>1200</sirina>
+        <visina>800</visina>
+    </ekran>
+    <baza>
+        <connectionString>jdbc:mysql://127.0.0.1:3306/galerija_db?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC</connectionString>
+        <korisnik>root</korisnik>
+        <lozinka>UPIŠI_SVOJU_LOZINKU_OVDJE</lozinka>
+    </baza>
+    <pocetniPodaciUrl></pocetniPodaciUrl>
+</config>

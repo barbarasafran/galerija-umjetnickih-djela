@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.controller.IzlozbaController">
+
+    <padding>
+        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+    </padding>
+
+    <center>
+        <TableView fx:id="tablicaIzlozbi" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="kolonaNaziv" text="Naziv" prefWidth="180.0"/>
+                <TableColumn fx:id="kolonaLokacija" text="Lokacija" prefWidth="140.0"/>
+                <TableColumn fx:id="kolonaPocetak" text="Početak" prefWidth="100.0"/>
+                <TableColumn fx:id="kolonaZavrsetak" text="Završetak" prefWidth="100.0"/>
+                <TableColumn fx:id="kolonaOpis" text="Opis" prefWidth="250.0"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <bottom>
+        <VBox spacing="10.0">
+            <padding>
+                <Insets top="15.0"/>
+            </padding>
+
+            <GridPane hgap="10.0" vgap="8.0">
+                <Label text="Naziv:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="poljeNaziv" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="200.0"/>
+
+                <Label text="Lokacija:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                <TextField fx:id="poljeLokacija" GridPane.rowIndex="0" GridPane.columnIndex="3" prefWidth="200.0"/>
+
+                <Label text="Datum početka:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <DatePicker fx:id="poljeDatumPocetka" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="200.0"/>
+
+                <Label text="Datum završetka:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                <DatePicker fx:id="poljeDatumZavrsetka" GridPane.rowIndex="1" GridPane.columnIndex="3" prefWidth="200.0"/>
+
+                <Label text="Opis:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextArea fx:id="poljeOpis" GridPane.rowIndex="2" GridPane.columnIndex="1"
+                          GridPane.columnSpan="3" prefRowCount="2"/>
+            </GridPane>
+
+            <HBox spacing="10.0">
+                <Button fx:id="gumbDodaj" text="Dodaj" onAction="#onDodaj"/>
+                <Button fx:id="gumbAzuriraj" text="Ažuriraj odabranu" onAction="#onAzuriraj"/>
+                <Button fx:id="gumbObrisi" text="Obriši odabranu" onAction="#onObrisi"/>
+                <Button fx:id="gumbOcisti" text="Očisti formu" onAction="#onOcisti"/>
+                <Button text="Izvezi katalog (XML)" onAction="#onExportKatalog"/>
+            </HBox>
+
+            <Label fx:id="labelPoruka" style="-fx-text-fill: red;" text=""/>
+        </VBox>
+    </bottom>
+
+</BorderPane>

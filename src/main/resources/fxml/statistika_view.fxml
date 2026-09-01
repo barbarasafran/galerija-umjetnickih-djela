@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.controller.StatistikaController">
+
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <top>
+        <Button text="Osvježi statistiku" onAction="#onOsvjezi"/>
+    </top>
+
+    <center>
+        <VBox spacing="15.0">
+            <padding>
+                <Insets top="20.0"/>
+            </padding>
+
+            <GridPane hgap="15.0" vgap="12.0">
+                <Label text="Ukupno djela u galeriji:" style="-fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <Label fx:id="labelUkupnoDjela" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label text="Broj različitih umjetnika:" style="-fx-font-weight: bold;" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label fx:id="labelBrojUmjetnika" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label text="Najstarije djelo:" style="-fx-font-weight: bold;" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <Label fx:id="labelNajstarije" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                <Label text="Najnovije djelo:" style="-fx-font-weight: bold;" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <Label fx:id="labelNajnovije" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                <Label text="Ima djela prije 1900.:" style="-fx-font-weight: bold;" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <Label fx:id="labelImaPrije1900" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+                <Label text="Sva djela imaju postavljen stil:" style="-fx-font-weight: bold;" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                <Label fx:id="labelSvaImajuStil" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <Label text="Broj djela po stilu:" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+            <ListView fx:id="listaPoStilu" prefHeight="150.0"/>
+        </VBox>
+    </center>
+
+</BorderPane>

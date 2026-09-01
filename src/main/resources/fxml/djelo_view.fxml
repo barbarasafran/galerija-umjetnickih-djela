@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.controller.DjeloController">
+
+    <padding>
+        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+    </padding>
+
+    <top>
+        <HBox spacing="10.0" alignment="CENTER_LEFT">
+            <padding>
+                <Insets bottom="10.0"/>
+            </padding>
+            <Label text="Pretraga (naziv):"/>
+            <TextField fx:id="poljePretraga" prefWidth="200.0"/>
+            <Label text="Stil:"/>
+            <ComboBox fx:id="filterStil" prefWidth="150.0"/>
+            <Label text="Umjetnik:"/>
+            <ComboBox fx:id="filterUmjetnik" prefWidth="150.0"/>
+            <Button text="Pretraži" onAction="#onPretrazi"/>
+            <Button text="Poništi filtere" onAction="#onPonistiFiltere"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TableView fx:id="tablicaDjela" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="kolonaNaziv" text="Naziv" prefWidth="130.0"/>
+                <TableColumn fx:id="kolonaGodina" text="Godina" prefWidth="70.0"/>
+                <TableColumn fx:id="kolonaUmjetnik" text="Umjetnik" prefWidth="130.0"/>
+                <TableColumn fx:id="kolonaStil" text="Stil" prefWidth="110.0"/>
+                <TableColumn fx:id="kolonaMaterijal" text="Materijal" prefWidth="110.0"/>
+                <TableColumn fx:id="kolonaOpis" text="Opis" prefWidth="220.0"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <bottom>
+        <VBox spacing="10.0">
+            <padding>
+                <Insets top="15.0"/>
+            </padding>
+
+            <GridPane hgap="10.0" vgap="8.0">
+                <Label text="Naziv:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="poljeNaziv" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="180.0"/>
+
+                <Label text="Godina nastanka:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                <TextField fx:id="poljeGodina" GridPane.rowIndex="0" GridPane.columnIndex="3" prefWidth="180.0"/>
+
+                <Label text="Umjetnik:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="poljeUmjetnik" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="180.0"/>
+
+                <Label text="Stil/Pokret:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                <ComboBox fx:id="poljeStil" GridPane.rowIndex="1" GridPane.columnIndex="3" prefWidth="180.0"/>
+
+                <Label text="Materijal/Tehnika:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="poljeMaterijal" GridPane.rowIndex="2" GridPane.columnIndex="1" prefWidth="180.0"/>
+
+                <Label text="Opis:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <TextArea fx:id="poljeOpis" GridPane.rowIndex="3" GridPane.columnIndex="1"
+                          GridPane.columnSpan="3" prefRowCount="3"/>
+            </GridPane>
+
+            <HBox spacing="10.0">
+                <Button fx:id="gumbDodaj" text="Dodaj" onAction="#onDodaj"/>
+                <Button fx:id="gumbAzuriraj" text="Ažuriraj odabrano" onAction="#onAzuriraj"/>
+                <Button fx:id="gumbObrisi" text="Obriši odabrano" onAction="#onObrisi"/>
+                <Button fx:id="gumbOcisti" text="Očisti formu" onAction="#onOcisti"/>
+            </HBox>
+
+            <Label fx:id="labelPoruka" style="-fx-text-fill: red;" text=""/>
+        </VBox>
+    </bottom>
+
+</BorderPane>

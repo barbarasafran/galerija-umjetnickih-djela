@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.controller.DjeloDetaljController">
+
+    <padding>
+        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+    </padding>
+
+    <top>
+        <HBox spacing="10.0" alignment="CENTER_LEFT">
+            <padding>
+                <Insets bottom="15.0"/>
+            </padding>
+            <Label text="Odaberi djelo:" style="-fx-font-weight: bold;"/>
+            <ComboBox fx:id="poljeOdaberiDjelo" prefWidth="280.0"/>
+            <Button text="Osvježi" onAction="#onOsvjezi"/>
+        </HBox>
+    </top>
+
+    <center>
+        <HBox spacing="20.0">
+
+            <!-- DROP-CILJ: slika (lijevo) + tekstualni podaci (desno od slike) -->
+            <HBox fx:id="panelDjela" spacing="20.0" style="-fx-border-color: #cccccc; -fx-border-width: 2px; -fx-border-style: dashed; -fx-padding: 15px;" HBox.hgrow="ALWAYS">
+
+                <!-- stupac sa slikom -->
+                <VBox spacing="10.0" prefWidth="280.0">
+                    <ImageView fx:id="slikaDjela" fitWidth="260.0" fitHeight="260.0" preserveRatio="true"/>
+                    <Button fx:id="gumbPostaviSliku" text="Postavi/promijeni sliku" onAction="#onPostaviSliku"/>
+                    <Button text="Izvezi u XML" onAction="#onExportXml"/>
+                </VBox>
+
+                <!-- stupac s tekstualnim podacima -->
+                <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                    <Label fx:id="labelNaziv" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                    <Label text="Godina nastanka:" style="-fx-font-weight: bold;"/>
+                    <Label fx:id="labelGodina"/>
+                    <Label text="Opis:" style="-fx-font-weight: bold;"/>
+                    <Label fx:id="labelOpis" wrapText="true"/>
+
+                    <Label text="Umjetnik:" style="-fx-font-weight: bold;"/>
+                    <Label fx:id="labelUmjetnik"/>
+                    <Label text="Stil/Pokret:" style="-fx-font-weight: bold;"/>
+                    <Label fx:id="labelStil"/>
+                    <Label text="Materijal/Tehnika:" style="-fx-font-weight: bold;"/>
+                    <Label fx:id="labelMaterijal"/>
+
+                    <Label text="Izložbe na kojima je djelo:" style="-fx-font-weight: bold;"/>
+                    <ListView fx:id="listaIzlozbi" prefHeight="100.0"/>
+                    <Button text="Ukloni odabranu izložbu" onAction="#onUkloniIzlozbu"/>
+                </VBox>
+
+            </HBox>
+
+            <!-- DESNI PANEL - filtrirajuća lista svih entiteta, izvor za drag&drop -->
+            <VBox spacing="10.0" prefWidth="280.0">
+                <Label text="Povuci na lijevu stranu:" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+                <ComboBox fx:id="filterTip" prefWidth="260.0"/>
+                <ListView fx:id="listaZaPovlacenje" VBox.vgrow="ALWAYS"/>
+            </VBox>
+
+        </HBox>
+    </center>
+
+    <bottom>
+        <Label fx:id="labelPoruka" style="-fx-text-fill: red; -fx-padding: 10px 0 0 0;" text=""/>
+    </bottom>
+
+</BorderPane>

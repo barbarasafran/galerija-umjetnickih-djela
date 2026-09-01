@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pocetniPodaci>
+    <umjetnici>
+        <umjetnik>
+            <ime>Claude</ime>
+            <prezime>Monet</prezime>
+            <drzava>Francuska</drzava>
+            <biografija>Francuski slikar, jedan od osnivača impresionizma.</biografija>
+        </umjetnik>
+        <umjetnik>
+            <ime>Pablo</ime>
+            <prezime>Picasso</prezime>
+            <drzava>Španjolska</drzava>
+            <biografija>Španjolski slikar i kipar, suosnivač kubizma.</biografija>
+        </umjetnik>
+        <umjetnik>
+            <ime>Vincent</ime>
+            <prezime>van Gogh</prezime>
+            <drzava>Nizozemska</drzava>
+            <biografija>Nizozemski postimpresionistički slikar.</biografija>
+        </umjetnik>
+    </umjetnici>
+
+    <stilovi>
+        <stil>
+            <naziv>Impresionizam</naziv>
+            <opis>Slikarski pokret usmjeren na dojam trenutka i svjetlosti.</opis>
+            <razdoblje>1860-1890</razdoblje>
+        </stil>
+        <stil>
+            <naziv>Kubizam</naziv>
+            <opis>Pokret koji prikazuje predmete kroz geometrijske oblike i više perspektiva.</opis>
+            <razdoblje>1907-1920</razdoblje>
+        </stil>
+        <stil>
+            <naziv>Postimpresionizam</naziv>
+            <opis>Nastavak impresionizma s naglaskom na emocije i strukturu.</opis>
+            <razdoblje>1880-1905</razdoblje>
+        </stil>
+    </stilovi>
+
+    <materijali>
+        <materijal>
+            <naziv>Ulje na platnu</naziv>
+            <opis>Klasična slikarska tehnika uljanim bojama na platnu.</opis>
+        </materijal>
+        <materijal>
+            <naziv>Akvarel</naziv>
+            <opis>Slikanje vodenim bojama na papiru.</opis>
+        </materijal>
+        <materijal>
+            <naziv>Skulptura</naziv>
+            <opis>Trodimenzionalno umjetničko djelo, obično od kamena, bronce ili drveta.</opis>
+        </materijal>
+    </materijali>
+</pocetniPodaci>
